@@ -1,5 +1,5 @@
 const express = require("express");
-
+const bodyParser = require("body-parser");
 const app = express();
 
 //미들웨어란?
@@ -8,8 +8,10 @@ const app = express();
 //미들웨어 함수는 req(요청)객체와 res(응답)객체, 그리고 어플리케이션
 //요청-응답 사이클도중 그 다음의 미들 웨어 함수에 대한 엑세스 권한을 갖는 함수다.
 
+app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use("/add-product", (req, res, next) => {
-  console.log("장미애");
+  console.log("111");
   res.send(
     "<form action='product' method='POST'><input type='text' name='title'><button type='submit'>Add product</button></form>"
   );
@@ -18,11 +20,10 @@ app.use("/product", (req, res) => {
   res.redirect("/");
 });
 app.use("/", (req, res, next) => {
-  console.log("장미애");
-  res.send(
-    "<h1>미애 최고!!! 사랑행!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11</h1>"
-  );
+  console.log("222");
+  res.send("<h1>js hello</h1>");
 });
+
 // const server = http.createServer(app);
 // server.listen(3000);
 //21, 22줄을 합쳐서
