@@ -1,10 +1,13 @@
 const path = require("path");
 
 const express = require("express");
+
+const rootDir = require("../util/path"); //루트 디렉토리 경로를 구축하는 깔금한 방식
+
 const router = express.Router();
 
 router.get("/add-product", (req, res, next) => {
-  res.sendFile(path.join(__dirname, "../", "views", "add-product.html"));
+  res.sendFile(path.join(rootDir, "views", "add-product.html"));
 }); //도달하려는 dadmin.js파일은 앞에 /admin이 있는 요청을 통해서만 접근할 수 있기 때문에
 //form action='/admin/add-product'이 형식을 지켜야
 
